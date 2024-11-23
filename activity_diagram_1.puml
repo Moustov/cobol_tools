@@ -1,0 +1,125 @@
+@startuml
+<style>
+activityDiagram {
+  BackgroundColor #E6F7FF
+  BorderColor #3399FF
+  FontColor #003366
+  FontName arial
+
+  diamond {
+    BackgroundColor #FFFFCC
+    LineColor #FFCC00
+    FontColor #666600
+    FontName arial
+    FontSize 15
+  }
+  arrow {
+    FontColor #FF6600
+    FontName arial
+    FontSize 15
+  }
+  partition {
+    LineColor #FF0000
+    FontColor #006600
+    RoundCorner 10
+    BackgroundColor #FFE6E6
+  }
+  note {
+    FontColor #0000FF
+    LineColor #000080
+    BackgroundColor #CCCCFF
+  }
+}
+document {
+   BackgroundColor White
+}
+</style>
+title cobol_tools/TESTXX.cob
+start
+partition Partie 1/1{
+	#palegreen:DEB<
+	
+note right: //(l:25)//
+
+	:MOVE DAT1A-R TO LK-AAMMJJ6-ENT-2;
+	
+note right: //(l:26)//
+
+	#Pink:APPEL-SP2000-DEB -> APPEL-SP2000-FIN - voir ligne :46; <<procedure>>
+	
+note right: //(l:27)//
+
+		if (__IF__ LK-CONV-1 NOT > LK-CONV-2\nOR LK-CONV-1 NOT = LK-CONV-2 ?) then (yes)
+						
+note right: //(l:30)//
+
+		:MOVE 0 TO DIFFDATE;
+		
+note right: //(l:33)//
+
+		#Pink:GO TO DEB-FIN - voir ligne //(l:39)//> 
+		detach
+		else (no)
+						
+note right: //(l:35)//
+
+		#Pink:ASUP -> ASUP-FIN - voir ligne :40; <<procedure>>
+		
+note right: //(l:36)//
+
+		endif
+	#palegreen:DEB-FIN<
+	
+note right: //(l:39)//
+
+	note
+					Usages: lines [34]
+	end note
+	#palegreen:ASUP<
+	
+note right: //(l:40)//
+
+	note
+					Usages: lines [36]
+	end note
+	stop
+	#palegreen:ASUP-FIN<
+	
+note right: //(l:42)//
+
+	note
+					Usages: lines [36]
+	end note
+	#palegreen:EXIT-GOBACK-PROGRAM<
+	
+note right: //(l:43)//
+
+	stop
+	note
+					.==========================================================
+	end note
+	#palegreen:APPEL-SP2000-DEB<
+	
+note right: //(l:46)//
+
+	note
+					Usages: lines [27]
+	end note
+	#Gold:CALL SP2000(ISP2000, DTFLNK, DTFINP, DTFWRK, DTFCOM)|
+	
+note right: //(l:47)//
+
+	#palegreen:APPEL-SP2000-FIN<
+	
+note right: //(l:48)//
+
+	note
+					Usages: lines [27]
+	end note
+	stop
+	note
+					.==========================================================
+	end note
+stop
+}
+@enduml
