@@ -1,4 +1,5 @@
 import re
+import sys
 from pathlib import Path
 
 from plantuml_tools.plant_uml_generator import plant_uml_svg_generator
@@ -752,7 +753,10 @@ def translate_cobol_to_plantuml(cobol_file: str):
 
 
 if __name__ == "__main__":
+    ROOT_FOLDER = sys.argv[1]
+    cobol_file = sys.argv[2]
     # translate_cobol_to_plantuml(r"obpa\srcv2\ssprog\REPARG.cob")
     # translate_cobol_to_plantuml(r"obpa\srcv2\progbc\TP783.cob")
     # translate_cobol_to_plantuml(r"obpa\srcv2\progbc\TP78A.cob")
-    translate_cobol_to_plantuml("cobol_tools\\TESTXX.cob")
+    # translate_cobol_to_plantuml("cobol_tools\\TESTXX.cob")
+    translate_cobol_to_plantuml(cobol_file)
