@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from Cobol.cobol_activity_diagram import parse_cobol, generate_plantuml, get_plantuml_style
+from cobol_activity_diagram import parse_cobol, generate_plantuml, get_plantuml_style
 
 
 class TestCobol(TestCase):

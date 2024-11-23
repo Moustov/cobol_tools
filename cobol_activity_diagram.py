@@ -754,4 +754,5 @@ def translate_cobol_to_plantuml(cobol_file: str):
 if __name__ == "__main__":
     # translate_cobol_to_plantuml(r"obpa\srcv2\ssprog\REPARG.cob")
     # translate_cobol_to_plantuml(r"obpa\srcv2\progbc\TP783.cob")
-    translate_cobol_to_plantuml(r"obpa\srcv2\progbc\TP78A.cob")
+    # translate_cobol_to_plantuml(r"obpa\srcv2\progbc\TP78A.cob")
+    translate_cobol_to_plantuml("cobol_tools\\TESTXX.cob")

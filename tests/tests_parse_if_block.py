@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from Cobol.cobol_activity_diagram import parse_if_block
+from cobol_activity_diagram import parse_if_block
 
 
 class TestIf(TestCase):
