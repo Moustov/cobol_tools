@@ -1,5 +1,5 @@
 # Cobol tools
-Series cobol related tools.
+Series of cobol related tools.
 
 ## Cobol activity diagram
 ### Description
@@ -35,3 +35,9 @@ $ python cobol_activity_diagram.py "c:/dev" "cobol_tools/TESTXX.cob"
 ````
 
 ## Debug mode
+Enables or disables debug mode on a list of files :
+
+Usage: python script.py <enable|disable> <file1> <file2> ...
+````
+$ python script.py enable TESTXX.cob
+````
