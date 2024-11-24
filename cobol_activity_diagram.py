@@ -2,7 +2,7 @@ import re
 import sys
 from pathlib import Path
 
-from plantuml_tools.plant_uml_generator import plant_uml_svg_generator
+from src.plantuml_tools.plant_uml_generator import plant_uml_svg_generator
 
 INDENT_BLOCK = "\t"
 ROOT_FOLDER = "c:/dev/"

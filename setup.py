@@ -29,18 +29,18 @@ setup(
     # There are some restrictions on what makes a valid project name
     # specification here:
     # https://packaging.python.org/specifications/core-metadata/#name
-    name="sampleproject",  # Required
+    name="Cobol Tools",  # Required
     # Versions should comply with PEP 440:
     # https://www.python.org/dev/peps/pep-0440/
     #
     # For a discussion on single-sourcing the version across setup.py and the
     # project code, see
     # https://packaging.python.org/guides/single-sourcing-package-version/
-    version="2.0.0",  # Required
+    version="1.1.0.0",  # Required
     # This is a one-line description or tagline of what your project does. This
     # corresponds to the "Summary" metadata field:
     # https://packaging.python.org/specifications/core-metadata/#summary
-    description="A sample Python project",  # Optional
+    description="Series of tools for Cobol",  # Optional
     # This is an optional longer description of your project that represents
     # the body of text which users will see when they visit PyPI.
     #
@@ -68,10 +68,10 @@ setup(
     url="https://github.com/pypa/sampleproject",  # Optional
     # This should be your name or the name of the organization which owns the
     # project.
-    author="A. Random Developer",  # Optional
+    author="C. Moustier",  # Optional
     # This should be a valid email address corresponding to the author listed
     # above.
-    author_email="author@example.com",  # Optional
+    author_email="firstname.name(at)free.fr",  # Optional
     # Classifiers help users find your project by categorizing it.
     #
     # For a list of valid classifiers, see https://pypi.org/classifiers/
