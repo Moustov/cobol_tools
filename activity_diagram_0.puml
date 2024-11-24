@@ -3,7 +3,7 @@
 start
 partition cobol_tools/TESTXX.cob (1/1){
 
-          :lignes 25 à 50;
+          :lignes 25 -> 50;
         	split 
 	:SP2000.cob|
 	detach

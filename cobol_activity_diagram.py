@@ -6,6 +6,8 @@ from plantuml_tools.plant_uml_generator import plant_uml_svg_generator
 
 INDENT_BLOCK = "\t"
 ROOT_FOLDER = "c:/dev/"
+BRANCH_NAME = "livraison"
+GIT_LAB_REPOS_URL = "http://gitlab.altair.recouv/999"
 PERFORM_REGEX = r"^\s*PERFORM\s+(?P<label1>[\w\d-]+)\s*( THRU\s+(?P<label2>[\w\d-]+)?\s*(\.)?)?( VARYING\s+(?P<variable>[\w\d-]+)\s+FROM\s+(?P<start>[\w\d-]+)\s+BY\s+(?P<increment>[\w\d-]+)\s+UNTIL\s+(?P<condition>.+))?\s*(\.)?$"
 
 
@@ -548,13 +550,23 @@ def get_plantuml_style() -> str:
 
 def get_line_number_url(base_url: str, line_num: int, indent: str):
     if base_url != "":
-        return f"[[{base_url}#L{line_num} (voir)]]\n"
+        return f"\n{indent}note right: (l:[[{base_url}#L{line_num} {line_num}]])\n"
     else:
         return f"\n{indent}note right: //(l:{line_num})//\n"
 
 
 def get_line_number_url_goto(line_num: int):
     return f"//(l:{line_num})//"
+
+
+def get_label_usages(label_usages: list, base_url: str):
+    res = ""
+    for line_num in label_usages:
+        if base_url != "":
+            res += f"[[{base_url}#L{line_num} {line_num}]] "
+        else:
+            res += f"{line_num} "
+    return res
 
 
 def generate_plantuml(instructions: list, label_usages: dict,
@@ -571,11 +583,11 @@ def generate_plantuml(instructions: list, label_usages: dict,
         indent = INDENT_BLOCK * line_indent
         if instruction.startswith("IF"):
             parts = re.search(r'IF \?(.*)\?', instruction.strip(), re.MULTILINE | re.DOTALL)
-            plantuml += f"{indent}if (__IF__ {parts.group(1)} ?) then (yes)\n"
-            plantuml += f"{indent + INDENT_BLOCK * 4}{get_line_number_url('', line_num, '')}\n"
+            plantuml += f"{indent}if (__IF__ {parts.group(1)} ?) then (yes) "
+            plantuml += f"{get_line_number_url(base_url, line_num, '')}\n"
         elif instruction == "ELSE":
-            plantuml += f"{indent}else (no)\n"
-            plantuml += f"{indent + INDENT_BLOCK * 4}{get_line_number_url('', line_num, '')}\n"
+            plantuml += f"{indent}else (no) "
+            plantuml += f"{get_line_number_url(base_url, line_num, '')}\n"
         elif instruction == "ENDIF":
             plantuml += f"{indent}endif\n"
         elif instruction.startswith("CALL"):
@@ -585,36 +597,36 @@ def generate_plantuml(instructions: list, label_usages: dict,
             if path:
                 plantuml += f"{indent}#Gold:CALL {fichier}({parts.group(2)}) [[{path} (voir fichier)]]|\n"
             else:
-                plantuml += f"{indent}#Gold:CALL {fichier}({parts.group(2)})|\n"
-            plantuml += f"{indent}{get_line_number_url('', line_num, '')}\n"
+                plantuml += f"{indent}#Gold:CALL {fichier}({parts.group(2)})| "
+            plantuml += f"{get_line_number_url(base_url, line_num, '')}\n"
         elif instruction.startswith("GO TO"):
             parts = re.search(r'GO TO\s+([\w-]+)(:(.+))?', instruction.strip())
             label = parts.group(1)
             #plantuml += f"{indent}#Pink:GO TO {label} - voir ligne {get_line_number_url_goto(parts.group(3))}> {get_line_number_url(base_url, line_num, '')}"
-            plantuml += f"{indent}#Pink:GO TO {label} - voir ligne {get_line_number_url_goto(parts.group(3))}> \n"
+            plantuml += f"{indent}#Pink:GO TO {label} - voir ligne {get_line_number_url_goto(parts.group(3))}> "
             # plantuml += f"{indent}{get_line_number_url(base_url, line_num)}\n"
             plantuml += f"{indent}detach\n"
         elif instruction.startswith("PERFORM SIMPLE"):
             parts = re.search(r'PERFORM SIMPLE\s+(.+)(:(.+))?', instruction.strip())
             if parts:
-                plantuml += f"{indent}#Pink:{parts.group(1)} - voir ligne {parts.group(3)}; <<procedure>>\n"
+                plantuml += f"{indent}#Pink:{parts.group(1)} - voir ligne {parts.group(3)}; <<procedure>> "
             else:
                 print("SYNTAX ERROR IN", instruction)
-            plantuml += f"{indent}{get_line_number_url('', line_num, '')}\n"
+            plantuml += f"{get_line_number_url(base_url, line_num, '')} "
         elif instruction.startswith("PERFORM THRU"):
             parts = re.search(r'PERFORM THRU\s+(.+) -> ([^:]+)?(:(.+))?', instruction.strip())
             if parts:
-                plantuml += f"{indent}#Pink:{parts.group(1)} -> {parts.group(2)} - voir ligne {parts.group(3)}; <<procedure>>\n"
+                plantuml += f"{indent}#Pink:{parts.group(1)} -> {parts.group(2)} - voir ligne {parts.group(3)}; <<procedure>> "
             else:
                 print("SYNTAX ERROR IN", instruction)
-            plantuml += f"{indent}{get_line_number_url('', line_num, '')}\n"
+            plantuml += f"{get_line_number_url(base_url, line_num, '')} "
         elif instruction.startswith("PERFORM VARYING"):
             parts = re.search(r'PERFORM VARYING (.+) -> (.+) VARYING ([^:]+)?(:(.+))', instruction.strip())
             if parts:
-                plantuml += f"{indent}while (__PERFORM__ {parts.group(3)}) is (true)\n"
-                plantuml += f"{indent}{get_line_number_url('', line_num, '')}\n"
-                plantuml += f"{indent + INDENT_BLOCK}#Pink:{parts.group(1)} -> {parts.group(2)} - voir ligne {parts.group(5)}; <<procedure>>\n"
-                plantuml += f"{indent + INDENT_BLOCK}{get_line_number_url('', line_num, '')}\n"
+                plantuml += f"{indent}while (__PERFORM__ {parts.group(3)}) is (true) "
+                plantuml += f"{get_line_number_url(base_url, line_num, '')} "
+                plantuml += f"{indent + INDENT_BLOCK}#Pink:{parts.group(1)} -> {parts.group(2)} - voir ligne {parts.group(5)}; <<procedure>> "
+                plantuml += f"{get_line_number_url(base_url, line_num, '')}\n"
                 plantuml += f"{indent}endwhile\n"
             else:
                 print("SYNTAX ERROR IN", instruction)
@@ -631,15 +643,15 @@ def generate_plantuml(instructions: list, label_usages: dict,
                 plantuml += f"{indent}end note\n"
         elif instruction.startswith("LABEL"):
             label_name = instruction[6:]
-            plantuml += f"{indent}#palegreen:{label_name}<\n"
-            plantuml += f"{indent}{get_line_number_url('', line_num, '')}\n"
+            plantuml += f"{indent}#palegreen:{label_name}< "
+            plantuml += f"{indent}{get_line_number_url(base_url, line_num, '')}\n"
             if label_name in label_usages.keys():
                 plantuml += f"{indent}note\n"
-                plantuml += f"{indent + INDENT_BLOCK * 4}Usages: lines {str(label_usages[label_name])}\n"
+                plantuml += f"{indent + INDENT_BLOCK * 4}Usages: lines {get_label_usages(label_usages[label_name], base_url)}\n"
                 plantuml += f"{indent}end note\n"
         else:
-            plantuml += f"{indent}:{str(instruction).rstrip()};\n"
-            plantuml += f"{indent}{get_line_number_url('', line_num, '')}\n"
+            plantuml += f"{indent}:{str(instruction).rstrip()}; "
+            plantuml += f"{indent}{get_line_number_url(base_url, line_num, '')}\n"
 
     plantuml += f"stop\n"
     if chapter_name:
@@ -662,7 +674,7 @@ def get_gitlab_path_from_file_path(cobol_name: str, root_folder: str, gitlab_bas
     if gitlab_base and path:
         domaine = path.parts[2]
         location = "/".join(path.parts[3:])
-        url = f"{gitlab_base}/{domaine}/-/tree/livraison/{location}"
+        url = f"{gitlab_base}/{domaine}/-/tree/{BRANCH_NAME}/{location}"
         return url
     else:
         return None
@@ -694,7 +706,7 @@ start
         res += "{\n"
         again = ""
         res += f"""
-          :lignes {premiere_ligne} à {derniere_ligne};
+          :lignes {premiere_ligne} -> {derniere_ligne};
         """
         dependencies = []
         for l in chapter:
@@ -739,7 +751,7 @@ def translate_cobol_to_plantuml(cobol_file: str):
     for i, instruction_chapter in enumerate(instruction_chapters):
         # Générer le diagramme d'activité PlantUML
         plantuml_diagram = generate_plantuml(instruction_chapter, labels, cobol_file,
-                                             base_url=f"http://gitlab.altair.recouv/999/{module_parts[0]}/-/tree/livraison/{'/'.join(module_parts[1:])}",
+                                             base_url=f"{GIT_LAB_REPOS_URL}/{module_parts[0]}/-/tree/{BRANCH_NAME}/{'/'.join(module_parts[1:])}",
                                              comments_on=True,
                                              chapter_name=f"Partie {i + 1}/{len(instruction_chapters)}")
         plantuml_diagrams.append(plantuml_diagram)
@@ -753,8 +765,11 @@ def translate_cobol_to_plantuml(cobol_file: str):
 
 
 if __name__ == "__main__":
-    ROOT_FOLDER = sys.argv[1]
-    cobol_file = sys.argv[2]
+    ROOT_FOLDER = sys.argv[1]   # eg. "c:\\dev\\"
+    cobol_file = sys.argv[2]    # eg. "cobol_tools\\TESTXX.cob"
+    # todo param for BRANCH_NAME = "livraison"
+    # todo param for GIT_LAB_REPOS_URL = "http://gitlab.altair.recouv/999"
+
     # translate_cobol_to_plantuml(r"obpa\srcv2\ssprog\REPARG.cob")
     # translate_cobol_to_plantuml(r"obpa\srcv2\progbc\TP783.cob")
     # translate_cobol_to_plantuml(r"obpa\srcv2\progbc\TP78A.cob")
