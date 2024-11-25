@@ -183,7 +183,8 @@ note right: //(l:31)//
 
 				#Pink:INITIAL-RUPT-TECR -> F-INITIAL-RUPT-TECR - voir ligne :???; <<procedure>> 
 note right: //(l:32)//
- 				#Pink:GO TO BC-RET-ECRI - voir ligne //(l:???)//> 				detach
+ 				#Pink:GO TO BC-RET-ECRI - voir ligne //(l:???)//>
+ 				detach
 				else (no) 
 note right: //(l:36)//
 
@@ -192,7 +193,8 @@ note right: //(l:37)//
 
 					#Pink:INITIAL-RUPT-TECR -> F-INITIAL-RUPT-TECR - voir ligne :???; <<procedure>> 
 note right: //(l:38)//
- 					#Pink:GO TO BC-RET-ECRI - voir ligne //(l:???)//> 					detach
+ 					#Pink:GO TO BC-RET-ECRI - voir ligne //(l:???)//>
+ 					detach
 					else (no) 
 note right: //(l:42)//
 
@@ -204,7 +206,8 @@ note right: //(l:45)//
 
 						#Pink:INITIAL-RUPT-TECR -> F-INITIAL-RUPT-TECR - voir ligne :???; <<procedure>> 
 note right: //(l:46)//
- 						#Pink:GO TO BC-RET-ECRI - voir ligne //(l:???)//> 						detach
+ 						#Pink:GO TO BC-RET-ECRI - voir ligne //(l:???)//>
+ 						detach
 						else (no) 
 note right: //(l:50)//
 
@@ -212,7 +215,8 @@ note right: //(l:50)//
 note right: //(l:51)//
  						#Pink:INITIAL-RUPT-JC -> F-INITIAL-RUPT-JC - voir ligne :???; <<procedure>> 
 note right: //(l:54)//
- 						#Pink:GO TO BC-RET-ECRI - voir ligne //(l:???)//> 						detach
+ 						#Pink:GO TO BC-RET-ECRI - voir ligne //(l:???)//>
+ 						detach
 						endif
 					endif
 				endif
@@ -776,7 +780,8 @@ note right: //(l:30)//
 		:MOVE 0 TO DIFFDATE; 		
 note right: //(l:31)//
 
-		#Pink:GO TO DEB-FIN - voir ligne //(l:37)//> 		detach
+		#Pink:GO TO DEB-FIN - voir ligne //(l:37)//>
+		detach
 		endif
 		if (__IF__ A1 NOT = A2 ?) then (yes) 
 note right: //(l:33)//
@@ -1387,7 +1392,8 @@ note right: //(l:30)//
 		:MOVE 0 TO DIFFDATE; 		
 note right: //(l:33)//
 
-		#Pink:GO TO DEB-FIN - voir ligne //(l:39)//> 		detach
+		#Pink:GO TO DEB-FIN - voir ligne //(l:39)//>
+		detach
 		else (no) 
 note right: //(l:35)//
 
@@ -1506,7 +1512,8 @@ note right: //(l:29)//
  		:MOVE TRI-PER-REP TO RUPT-PER-REP; 		
 note right: //(l:32)//
 
-		#Pink:GO TO BC-RET-ECRI - voir ligne //(l:36)//> 		detach
+		#Pink:GO TO BC-RET-ECRI - voir ligne //(l:36)//>
+		detach
 		endif
 	#palegreen:DEB-FIN< 	
 note right: //(l:35)//
@@ -1568,7 +1575,8 @@ stop
 	#palegreen:DEB< 	
 note right: //(l:14)//
 
-	#Pink:GO TO APPEL-SP2000-DEB - voir ligne //(l:20)//> 	detach
+	#Pink:GO TO APPEL-SP2000-DEB - voir ligne //(l:20)//>
+	detach
 	#palegreen:DEB-FIN< 	
 note right: //(l:16)//
 

@@ -51,7 +51,8 @@ note right: (l:[[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TE
 		:MOVE 0 TO DIFFDATE; 		
 note right: (l:[[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L33 33]])
 
-		#Pink:GO TO DEB-FIN - voir ligne //(l:39)//> 		detach
+		#Pink:GO TO DEB-FIN - voir ligne //(l:39)//> 
+		detach
 		else (no) 
 note right: (l:[[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L35 35]])
 
@@ -90,7 +91,8 @@ note right: (l:[[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TE
 	note
 					Usages: lines [[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L27 27]] 
 	end note
-	#Gold:CALL SP2000(ISP2000, DTFLNK, DTFINP, DTFWRK, DTFCOM)| 
+	#Gold:CALL SP2000(ISP2000, DTFLNK, DTFINP, DTFWRK, DTFCOM) [[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob/obde/-/tree/livraison/srcv2/ssprog/SP2000.cob (voir fichier)]]|
+
 note right: (l:[[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L47 47]])
 
 	#palegreen:APPEL-SP2000-FIN< 	
