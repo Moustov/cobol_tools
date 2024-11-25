@@ -603,7 +603,7 @@ def generate_plantuml(instructions: list, label_usages: dict,
             parts = re.search(r'GO TO\s+([\w-]+)(:(.+))?', instruction.strip())
             label = parts.group(1)
             #plantuml += f"{indent}#Pink:GO TO {label} - voir ligne {get_line_number_url_goto(parts.group(3))}> {get_line_number_url(base_url, line_num, '')}"
-            plantuml += f"{indent}#Pink:GO TO {label} - voir ligne {get_line_number_url_goto(parts.group(3))}> "
+            plantuml += f"{indent}#Pink:GO TO {label} - voir ligne {get_line_number_url_goto(parts.group(3))}> \n"
             # plantuml += f"{indent}{get_line_number_url(base_url, line_num)}\n"
             plantuml += f"{indent}detach\n"
         elif instruction.startswith("PERFORM SIMPLE"):
