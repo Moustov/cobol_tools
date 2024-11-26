@@ -238,7 +238,8 @@ note right: //(l:64)//
 note right: //(l:65)//
  				#Pink:INITIAL-RUPT-MDE-VRS -> F-INITIAL-RUPT-MDE-VRS - voir ligne :???; <<procedure>> 
 note right: //(l:68)//
- 				#Pink:GO TO BC-RET-ECRI - voir ligne //(l:???)//> 				detach
+ 				#Pink:GO TO BC-RET-ECRI - voir ligne //(l:???)//>
+ 				detach
 				else (no) 
 note right: //(l:72)//
 
@@ -255,17 +256,20 @@ note right: //(l:79)//
  					if (__IF__ TRI-DT-JC < W-DT-JC-DEB ?) then (yes) 
 note right: //(l:89)//
 
-					#Pink:GO TO BC-RET-ECRI - voir ligne //(l:???)//> 					detach
+					#Pink:GO TO BC-RET-ECRI - voir ligne //(l:???)//>
+					detach
 					endif
 					if (__IF__ ECRI-CD-TEMO-ENR NOT = "XX" ?) then (yes) 
 note right: //(l:92)//
 
-					#Pink:GO TO BC-RET-ECRI - voir ligne //(l:???)//> 					detach
+					#Pink:GO TO BC-RET-ECRI - voir ligne //(l:???)//>
+					detach
 					endif
 				:MOVE 0 TO IND; 				
 note right: //(l:95)//
 
-				#Pink:GO TO RUPTURE-ECRITURE-40 - voir ligne //(l:145)//> 				detach
+				#Pink:GO TO RUPTURE-ECRITURE-40 - voir ligne //(l:145)//>
+				detach
 				endif
 			endif
 		endif
@@ -286,7 +290,8 @@ note right: //(l:108)//
 note right: //(l:110)//
  		#Pink:INITIAL-RUPT-JC -> F-INITIAL-RUPT-JC - voir ligne :???; <<procedure>> 
 note right: //(l:114)//
- 		#Pink:GO TO BC-RET-ECRI - voir ligne //(l:???)//> 		detach
+ 		#Pink:GO TO BC-RET-ECRI - voir ligne //(l:???)//>
+ 		detach
 		endif
 	note
 					.=====
@@ -316,12 +321,14 @@ note right: //(l:131)//
 		if (__IF__ TRI-DT-JC < W-DT-JC-DEB ?) then (yes) 
 note right: //(l:140)//
 
-		#Pink:GO TO BC-RET-ECRI - voir ligne //(l:???)//> 		detach
+		#Pink:GO TO BC-RET-ECRI - voir ligne //(l:???)//>
+		detach
 		endif
 		if (__IF__ ECRI-CD-TEMO-ENR NOT = "XX" ?) then (yes) 
 note right: //(l:142)//
 
-		#Pink:GO TO BC-RET-ECRI - voir ligne //(l:???)//> 		detach
+		#Pink:GO TO BC-RET-ECRI - voir ligne //(l:???)//>
+		detach
 		endif
 	:MOVE 0 TO IND.; 	
 note right: //(l:144)//
