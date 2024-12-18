@@ -38,68 +38,68 @@ title cobol_tools/TESTXX.cob
 start
 partition Partie 1/1{
 	#palegreen:DEB< 	
-note right: (l:[[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L25 25]])
+note right: (l:[[https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob#L25 25]])
 
 	:MOVE DAT1A-R TO LK-AAMMJJ6-ENT-2; 	
-note right: (l:[[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L26 26]])
+note right: (l:[[https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob#L26 26]])
 
 	#Pink:APPEL-SP2000-DEB -> APPEL-SP2000-FIN - voir ligne :46; <<procedure>> 
-note right: (l:[[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L27 27]])
+note right: (l:[[https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob#L27 27]])
  		if (__IF__ LK-CONV-1 NOT > LK-CONV-2\nOR LK-CONV-1 NOT = LK-CONV-2 ?) then (yes) 
-note right: (l:[[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L30 30]])
+note right: (l:[[https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob#L30 30]])
 
 		:MOVE 0 TO DIFFDATE; 		
-note right: (l:[[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L33 33]])
+note right: (l:[[https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob#L33 33]])
 
 		#Pink:GO TO DEB-FIN - voir ligne //(l:39)//> 
 		detach
 		else (no) 
-note right: (l:[[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L35 35]])
+note right: (l:[[https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob#L35 35]])
 
 		#Pink:ASUP -> ASUP-FIN - voir ligne :40; <<procedure>> 
-note right: (l:[[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L36 36]])
+note right: (l:[[https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob#L36 36]])
  		endif
 	#palegreen:DEB-FIN< 	
-note right: (l:[[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L39 39]])
+note right: (l:[[https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob#L39 39]])
 
 	note
-					Usages: lines [[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L34 34]] 
+					Usages: lines [[https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob#L34 34]] 
 	end note
 	#palegreen:ASUP< 	
-note right: (l:[[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L40 40]])
+note right: (l:[[https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob#L40 40]])
 
 	note
-					Usages: lines [[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L36 36]] 
+					Usages: lines [[https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob#L36 36]] 
 	end note
 	stop
 	#palegreen:ASUP-FIN< 	
-note right: (l:[[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L42 42]])
+note right: (l:[[https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob#L42 42]])
 
 	note
-					Usages: lines [[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L36 36]] 
+					Usages: lines [[https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob#L36 36]] 
 	end note
 	#palegreen:EXIT-GOBACK-PROGRAM< 	
-note right: (l:[[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L43 43]])
+note right: (l:[[https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob#L43 43]])
 
 	stop
 	note
 					.==========================================================
 	end note
 	#palegreen:APPEL-SP2000-DEB< 	
-note right: (l:[[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L46 46]])
+note right: (l:[[https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob#L46 46]])
 
 	note
-					Usages: lines [[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L27 27]] 
+					Usages: lines [[https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob#L27 27]] 
 	end note
-	#Gold:CALL SP2000(ISP2000, DTFLNK, DTFINP, DTFWRK, DTFCOM) [[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob/obde/-/tree/livraison/srcv2/ssprog/SP2000.cob (voir fichier)]]|
+	#Gold:CALL SP2000(ISP2000, DTFLNK, DTFINP, DTFWRK, DTFCOM) [[https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob/Moustov/cobol_tools/blob/main/srcv2/ssprog/SP2000.cob (voir fichier)]]|
 
-note right: (l:[[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L47 47]])
+note right: (l:[[https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob#L47 47]])
 
 	#palegreen:APPEL-SP2000-FIN< 	
-note right: (l:[[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L48 48]])
+note right: (l:[[https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob#L48 48]])
 
 	note
-					Usages: lines [[http://gitlab.altair.recouv/999/cobol_tools/-/tree/livraison/TESTXX.cob#L27 27]] 
+					Usages: lines [[https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob#L27 27]] 
 	end note
 	stop
 	note

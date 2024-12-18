@@ -6,8 +6,8 @@ from src.plantuml_tools.plant_uml_generator import plant_uml_svg_generator
 
 INDENT_BLOCK = "\t"
 ROOT_FOLDER = "c:/dev/"
-BRANCH_NAME = "livraison"
-GIT_LAB_REPOS_URL = "http://gitlab.altair.recouv/999"
+BRANCH_NAME = "Moustov/cobol_tools/blob/main"
+GIT_LAB_REPOS_URL = "https://github.com"
 PERFORM_REGEX = r"^\s*PERFORM\s+(?P<label1>[\w\d-]+)\s*( THRU\s+(?P<label2>[\w\d-]+)?\s*(\.)?)?( VARYING\s+(?P<variable>[\w\d-]+)\s+FROM\s+(?P<start>[\w\d-]+)\s+BY\s+(?P<increment>[\w\d-]+)\s+UNTIL\s+(?P<condition>.+))?\s*(\.)?$"
 
 
@@ -674,7 +674,7 @@ def get_gitlab_path_from_file_path(cobol_name: str, root_folder: str, gitlab_bas
     if gitlab_base and path:
         domaine = path.parts[2]
         location = "/".join(path.parts[3:])
-        url = f"{gitlab_base}/{domaine}/-/tree/{BRANCH_NAME}/{location}"
+        url = f"{gitlab_base}/{BRANCH_NAME}/{location}"
         return url
     else:
         return None
@@ -749,7 +749,7 @@ def translate_cobol_to_plantuml(cobol_file: str):
     for i, instruction_chapter in enumerate(instruction_chapters):
         # Générer le diagramme d'activité PlantUML
         plantuml_diagram = generate_plantuml(instruction_chapter, labels, cobol_file,
-                                             base_url=f"{GIT_LAB_REPOS_URL}/{module_parts[0]}/-/tree/{BRANCH_NAME}/{'/'.join(module_parts[1:])}",
+                                             base_url=f"{GIT_LAB_REPOS_URL}/{BRANCH_NAME}/{'/'.join(module_parts[1:])}",
                                              comments_on=True,
                                              chapter_name=f"Partie {i + 1}/{len(instruction_chapters)}")
         plantuml_diagrams.append(plantuml_diagram)
@@ -766,7 +766,7 @@ if __name__ == "__main__":
     # https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob
     ROOT_FOLDER = sys.argv[1]   # eg. "c:\\dev\\"
     cobol_file = sys.argv[2]    # eg. "cobol_tools\\TESTXX.cob"
-    # todo param for BRANCH_NAME = "Moustov/cobol_tools/blob/main/"
-    # todo param for GIT_LAB_REPOS_URL = "https://github.com/"
+    # todo param for BRANCH_NAME = "Moustov/cobol_tools/blob/main"
+    # todo param for GIT_LAB_REPOS_URL = "https://github.com"
 
     translate_cobol_to_plantuml(cobol_file)
