@@ -734,9 +734,7 @@ end
 
 def translate_cobol_to_plantuml(cobol_file: str):
     # Lire le contenu du fichier COBOL
-    # C:\dev\obpa\srcv2\progbc\TP783.cob
 
-    # cobol_file = r"obpa\srcv2\ssprog\REPARG.cob"
     cobol_file = cobol_file.replace("\\", "/")
     with open(rf'{ROOT_FOLDER}{cobol_file}', 'r') as file:
         cobol_content = file.read()
@@ -765,13 +763,10 @@ def translate_cobol_to_plantuml(cobol_file: str):
 
 
 if __name__ == "__main__":
+    # https://github.com/Moustov/cobol_tools/blob/main/TESTXX.cob
     ROOT_FOLDER = sys.argv[1]   # eg. "c:\\dev\\"
     cobol_file = sys.argv[2]    # eg. "cobol_tools\\TESTXX.cob"
-    # todo param for BRANCH_NAME = "livraison"
-    # todo param for GIT_LAB_REPOS_URL = "http://gitlab.altair.recouv/999"
+    # todo param for BRANCH_NAME = "Moustov/cobol_tools/blob/main/"
+    # todo param for GIT_LAB_REPOS_URL = "https://github.com/"
 
-    # translate_cobol_to_plantuml(r"obpa\srcv2\ssprog\REPARG.cob")
-    # translate_cobol_to_plantuml(r"obpa\srcv2\progbc\TP783.cob")
-    # translate_cobol_to_plantuml(r"obpa\srcv2\progbc\TP78A.cob")
-    # translate_cobol_to_plantuml("cobol_tools\\TESTXX.cob")
     translate_cobol_to_plantuml(cobol_file)
